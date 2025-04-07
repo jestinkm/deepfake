@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #1e7e34;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .google-btn {
+            background-color: #db4437;
+        }
+
+        .google-btn:hover {
+            background-color: #c53929;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="new_username">Username:</label>
+                <input type="text" id="new_username" name="new_username" required>
+            </div>
+            <div class="form-group">
+                <label for="new_password">Password:</label>
+                <input type="password" id="new_password" name="new_password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <button type="button" class="google-btn" onclick="signInWithGoogle()">Sign up with Google</button>
+        <div class="login-link">
+            Already have an account? <a href="login.html">Log in</a>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the Firebase SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        // Replace with your actual Firebase project configuration
+        const firebaseConfig = {
+  apiKey: "AIzaSyBNMbLYkSonSPFQrhUfS9Fx920MbbaGJq0",
+  authDomain: "cyber-fb7f4.firebaseapp.com",
+  projectId: "cyber-fb7f4",
+  storageBucket: "cyber-fb7f4.firebasestorage.app",
+  messagingSenderId: "455220900777",
+  appId: "1:455220900777:web:34a3dd07935757e4228ab8",
+  measurementId: "G-R94H8LLT28"
+};
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        window.signInWithGoogle = async () => {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential?.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log("Google Sign-up successful", user);
+                // You can now redirect the user to your main application page
+                // window.location.href = '/dashboard';
+            } catch (error) {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData?.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                console.error("Google Sign-up error:", errorCode, errorMessage, email, credential);
+                // Display an error message to the user
+            }
+        };
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const newUsername = document.getElementById('new_username').value;
+            const newPassword = document.getElementById('new_password').value;
+            // In a real application, you would send these credentials to your server for Firebase user creation.
+            console.log("Sign up with:", name, email, newUsername, newPassword);
+            // After successful signup, you might want to redirect the user.
+            // window.location.href = '/dashboard';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Face Recognition</title>
+</head>
+<body>
+    <h1>Live Face Recognition System</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        // Start video stream
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => console.error("Camera access denied:", err));
+
+        function captureFrame() {
+            // Capture the frame from the video stream
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = canvas.toDataURL('image/jpeg').split(',')[1];  // Convert to base64
+
+            // Send the captured frame to Flask backend for processing
+            fetch('http://127.0.0.1:5000/check_face', {  // Pointing to Flask backend
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ image: imageData })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Server Response:", data);
+                showNotification(data.message);
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        function showNotification(message) {
+            // Show a pop-up notification based on the response from Flask
+            alert(message);
+        }
+
+        // Continuously capture frames every second
+        setInterval(captureFrame, 1000);  // 1000ms = 1 second
+    </script>
+</body>
+</html>
