@@ -1,7 +1,7 @@
 # Deepfake Facial Recognition Project
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)  
-[Live Frontend](https://deepfack.netlify.app) | [GitHub Repository](https://github.com/jestinkm/deepfake) | [Download Files](https://drive.google.com/file/d/1c0-wRMEXkCyUuUw-IB0Z6yShS1RD7Wk3/view?usp=sharing)
+[Live Frontend](https://darling-bombolone-94d5b1.netlify.app) | [GitHub Repository](https://github.com/jestinkm/deepfake) | [live viedo of working](https://drive.google.com/file/d/1c0-wRMEXkCyUuUw-IB0Z6yShS1RD7Wk3/view?usp=sharing)
 
 ---
 
