@@ -1,0 +1,10 @@
+flask
+flask-cors
+opencv-python
+numpy
+face-recognition
+dlib
+requests
+tensorflow
+torch
+torchvision
