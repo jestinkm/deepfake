@@ -1,15 +1,11 @@
-ChatGPT said:
-
-Got it! You want a ready-to-push README.md file with comments/instructions for Git so you can commit and push all your project files properly. I’ll create a version with Git instructions commented inside. You can copy it as README.md and follow the steps.
-
 # Deepfake Facial Recognition Project
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)  
-[Live Frontend](https://darling-bombolone-94d5b1.netlify.app/)  note: only frotend no backend works | [GitHub Repository](https://github.com/jestinkm/deepfake)
+[Live Frontend](https://deepfack.netlify.app) | [GitHub Repository](https://github.com/jestinkm/deepfake) | [Download Files](https://drive.google.com/file/d/1c0-wRMEXkCyUuUw-IB0Z6yShS1RD7Wk3/view?usp=sharing)
 
 ---
 
-## Table of Contents
+## **Table of Contents**
 
 1. [Project Overview](#project-overview)  
 2. [Features](#features)  
@@ -23,7 +19,7 @@ Got it! You want a ready-to-push README.md file with comments/instructions for G
 
 ---
 
-## Project Overview
+## **Project Overview**
 
 This project is a **Deepfake/Facial Recognition secured file system** that:  
 
@@ -39,20 +35,18 @@ The system is split into:
 
 ---
 
-## Features
+## **Features**
 
 - Real-time face recognition using OpenCV & face_recognition  
 - Deepfake detection (future upgrade possible)  
 - Automatic file access control: Opens/closes files based on face detection  
 - Threat analysis: Detects anomalies in access attempts  
 - Lightweight deployment: Frontend on Netlify, backend on free Python hosting (Replit/Railway)  
+- Option to download project files directly from Google Drive  
 
 ---
 
-## Folder Structure
-
-
-
+## **Folder Structure**
 deepfake/
 │-- app.py # Flask backend
 │-- requirements.txt # Python dependencies
@@ -69,13 +63,12 @@ deepfake/
 
 ---
 
-## Installation (Local Setup)
+## **Installation (Local Setup)**
 
 1. Clone the repository:
 ```bash
 git clone https://github.com/jestinkm/deepfake.git
 cd deepfake
-
 
 Create a virtual environment:
 
@@ -101,6 +94,9 @@ http://127.0.0.1:5000/
 
 
 Login and test facial recognition features.
+
+Optional: Download full project files from Google Drive:
+Download Link
 
 Deployment (Free)
 Frontend (Netlify)
@@ -146,9 +142,6 @@ License
 MIT License — see LICENSE
 
 Git Push Instructions
-
-You can use these commands to commit and push your project:
-
 # 1. Check status
 git status
 
@@ -170,3 +163,6 @@ git push -u origin main
 venv310/
 __pycache__/
 *.pyc
+
+
+
