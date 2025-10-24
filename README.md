@@ -5,7 +5,7 @@ Got it! You want a ready-to-push README.md file with comments/instructions for G
 # Deepfake Facial Recognition Project
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)  
-[Live Frontend](https://deepfack.netlify.app) | [GitHub Repository](https://github.com/jestinkm/deepfake)
+[Live Frontend](https://darling-bombolone-94d5b1.netlify.app/)  note: only frotend no backend works | [GitHub Repository](https://github.com/jestinkm/deepfake)
 
 ---
 
